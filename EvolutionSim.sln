@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvolutionSim", "EvolutionSim\EvolutionSim.csproj", "{59105703-6DFC-41E5-A15D-6D746F1FC0CB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{59105703-6DFC-41E5-A15D-6D746F1FC0CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59105703-6DFC-41E5-A15D-6D746F1FC0CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59105703-6DFC-41E5-A15D-6D746F1FC0CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59105703-6DFC-41E5-A15D-6D746F1FC0CB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
