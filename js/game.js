@@ -5,6 +5,7 @@ function Controller() {
 }
 
 Controller.prototype.AddServer = function(name, numEntities, worldX, worldY) {
+	console.log("create server: ", name, numEntities, worldX, worldY);
 	var server = new Server(numEntities, worldX, worldY);
 	this.servers[name] = server;
 }
@@ -26,6 +27,7 @@ function Server(numEntities, worldX, worldY) {
 }
 
 Server.prototype.CreateWorld = function() {
+	console.log(this.worldX + 1);
 	this.world = new Array(this.worldX + 1);
 	for (var i = 0; i <= this.worldX; i++) {
 		this.world[i] = new Array(this.worldY + 1);

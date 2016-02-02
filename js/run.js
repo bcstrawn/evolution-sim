@@ -30,6 +30,11 @@ function run(command){
 		
 		);
 	} else if (commands[0] == "start") {
+		if (commands.length < 5) {
+			AddText("You must pass in 4 parameters.");
+			return;
+		}
+		
 		var name = commands[1];
 		var numEntities = parseInt(commands[2]);
 		var worldX = parseInt(commands[3]);

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>This is an rpg tpying game</title>
+
+
+	<style>
+		body {
+			padding:0;
+			margin:0;
+			overflow:hidden;
+
+			font-family: 'Rufina', serif;
+			font-size: 22px;
+		}
+
+		#textbox {
+			float: left;
+			margin-right: 20px;
+			width: 700px;
+		    overflow-y: scroll;
+		    height: 500px;
+		}
+
+		#stats {
+			resize: none;
+			float: left;
+		}
+
+		#world {
+			width: 400px;
+			height: 400px;
+			border: 1px solid gray;
+		    position: absolute;
+		    top: 10px;
+		    right: 10px;
+		}
+
+		.grid-square {
+			background: gray;
+			border: 1px solid white;
+			position: absolute;
+			width: 5px;
+			height: 5px;
+		}
+
+		.male {
+			background: #5050a0;
+		}
+
+		.female {
+			background: #a05050;
+		}
+
+
+	</style>
+</head>
+<body>
+
+	<script>
+		(function(){var a={};typeof define!="undefined"?define([],function(){return a}):typeof window!="undefined"?window.my=a:module.exports=a,a.Class=function(){var a=arguments.length,d=arguments[a-1],e=a>1?arguments[0]:null,f=a>2,g,h;d.constructor===Object?g=function(){}:(g=d.constructor,delete d.constructor),e&&(h=function(){},h.prototype=e.prototype,g.prototype=new h,g.prototype.constructor=g,g.Super=e,c(g,e,!1));if(f)for(var i=1;i<a-1;i++)c(g.prototype,arguments[i].prototype,!1);return b(g,d),g};var b=a.extendClass=function(a,b,d){b.STATIC&&(c(a,b.STATIC,d),delete b.STATIC),c(a.prototype,b,d)},c=function(a,b,c){var d;if(c===!1)for(d in b)d in a||(a[d]=b[d]);else{for(d in b)a[d]=b[d];b.toString!==Object.prototype.toString&&(a.toString=b.toString)}}})();
+	</script>
+
+
+	<script type="text/javascript">
+		var TYPE = {};
+	</script>
+
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="jquery.js"></script> 
+	<script src="engine.js"></script>
+	<script src="graphics.js"></script>
+	<script src="player.js"></script>
+	<script src="network.js"></script>
+	<script src="grid.js"></script>
+
+	<script type="text/javascript">
+		var type = new TYPE.TypingEngine();
+		var lastSentMessage = "";
+
+		window.onload = function () {
+			$('#command').focus();
+			type.init();
+		}
+
+		$(function() {
+			$('#datasend').click( function() {
+				var inputBox = document.getElementById('command');
+				var message = inputBox.value;
+				lastSentMessage = message;
+				inputBox.value = '';
+				type.run(message);
+			});
+			$('#dataresend').click( function() {
+				type.run(lastSentMessage);
+			});
+
+			// when the client hits ENTER on their keyboard
+			$('#command').keypress(function(e) {
+				if(e.which == 13) {
+					$('#datasend').focus().click();
+					this.focus();
+				}
+			});
+		});
+
+		// var oldTime = 0;
+		// var type = new TYPE.TypingEngine();
+
+		// window.onload = function() {
+		// 	type.init();
+		// }
+
+
+		// function animate(time) {		
+		// 	requestAnimationFrame( animate );
+
+		// 	var dt = time - oldTime;
+		// 	oldTime = time;
+
+		// 	type.render();
+		// 	type.update(dt, time);
+		// }
+	</script>
+
+	
+	<div id="textbox">
+	</div>
+	<div id="stats" readonly="readonly">
+
+		Population: <span id="population"></span> <br>
+		Number of Males: <span id="num-males"></span> <br>
+		Number of Females: <span id="num-females"></span> <br>
+		Average Age: <span id="age"></span> <br>
+		Average Lifespan: <span id="lifespan"></span> <br>
+	</div>
+	
+	<br clear="left" />
+	
+	<input id="command" style="width:200px;" />
+	<input type="button" id="datasend" value="send" />
+	<input type="button" id="dataresend" value="resend" />
+
+	<div id="world"></div>
+</body>
+</html>
